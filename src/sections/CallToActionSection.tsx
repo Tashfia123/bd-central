@@ -160,14 +160,8 @@ const CallToActionSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-8 md:mb-10"
+          className="text-center mb-12 md:mb-16 lg:mb-20"
         >
-          <div className="inline-flex items-center gap-2 bg-bnp-green-50 text-bnp-green px-3 py-1 rounded-full text-xs font-medium mb-3">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            ভোটের গাইড
-          </div>
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
             কিভাবে ভোট দেবেন
           </h2>

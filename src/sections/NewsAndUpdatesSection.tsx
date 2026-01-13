@@ -182,20 +182,20 @@ const NewsAndUpdatesSection = () => {
   };
 
   return (
-    <section className="w-full bg-gradient-to-b from-white via-gray-50/50 to-white pt-32 md:pt-36 lg:pt-40 pb-8 md:pb-10 lg:pb-12 overflow-hidden relative">
+    <section className="w-full bg-gradient-to-b from-white via-gray-50/50 to-white pt-20 md:pt-24 lg:pt-28 pb-8 md:pb-10 lg:pb-12 overflow-hidden relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12 md:mb-16 lg:mb-20"
+          transition={{ duration: 0.4 }}
+          className="text-center mb-8 md:mb-12 lg:mb-16 px-4"
         >
-          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-2">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-1">
             ইশতেহার
           </h2>
-          <div className="w-16 h-0.5 bg-bnp-green mx-auto rounded-full" />
+          <div className="w-16 md:w-20 h-0.5 md:h-1 bg-bnp-green mx-auto rounded-full" />
         </motion.div>
 
         {/* Video Carousel */}

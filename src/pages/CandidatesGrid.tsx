@@ -1,9 +1,13 @@
 import { motion } from 'framer-motion';
 import { candidates } from '../data/candidates';
 import { useNavigate } from 'react-router-dom';
+import { useState, useMemo } from 'react';
+import CandidateCard from '../components/CandidateCard';
 
 const CandidatesGrid = () => {
   const navigate = useNavigate();
+  const [selectedDistrict, setSelectedDistrict] = useState<string>('');
+  const [selectedRegion, setSelectedRegion] = useState<string>('');
 
   const handleCandidateClick = (candidateId: string) => {
     navigate(`/candidate/${candidateId}`);
@@ -13,11 +17,56 @@ const CandidatesGrid = () => {
     navigate('/');
   };
 
+  // Extract unique districts dynamically
+  const districts = useMemo(() => {
+    const uniqueDistricts = Array.from(
+      new Set(candidates.map((c) => c.district))
+    ).sort();
+    return uniqueDistricts;
+  }, []);
+
+  // Extract regions based on selected district
+  const regions = useMemo(() => {
+    if (!selectedDistrict) return [];
+    const regionsForDistrict = candidates
+      .filter((c) => c.district === selectedDistrict)
+      .map((c) => c.region);
+    return Array.from(new Set(regionsForDistrict)).sort();
+  }, [selectedDistrict]);
+
+  // Filter candidates based on selections
+  const filteredCandidates = useMemo(() => {
+    let filtered = candidates;
+
+    if (selectedDistrict) {
+      filtered = filtered.filter((c) => c.district === selectedDistrict);
+    }
+
+    if (selectedRegion) {
+      filtered = filtered.filter((c) => c.region === selectedRegion);
+    }
+
+    return filtered;
+  }, [selectedDistrict, selectedRegion]);
+
   // Ensure Tarique Rahman is first
-  const sortedCandidates = [
-    candidates.find((c) => c.id === 'tarique-rahman')!,
-    ...candidates.filter((c) => c.id !== 'tarique-rahman'),
-  ];
+  const sortedCandidates = useMemo(() => {
+    const tarique = filteredCandidates.find((c) => c.id === 'tarique-rahman');
+    const others = filteredCandidates.filter((c) => c.id !== 'tarique-rahman');
+    return tarique ? [tarique, ...others] : others;
+  }, [filteredCandidates]);
+
+  // Reset filters
+  const handleResetFilters = () => {
+    setSelectedDistrict('');
+    setSelectedRegion('');
+  };
+
+  // Handle district change (reset region when district changes)
+  const handleDistrictChange = (district: string) => {
+    setSelectedDistrict(district);
+    setSelectedRegion(''); // Reset region when district changes
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-bnp-green-50">
@@ -47,7 +96,82 @@ const CandidatesGrid = () => {
         </div>
       </div>
 
-      {/* Candidates Grid */}
+      {/* Filter Section - 50% width on left */}
+      <div className="bg-white/80 backdrop-blur-sm border-b border-gray-100 py-6 md:py-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
+            {/* Filter Panel - 50% width on left */}
+            <div className="w-full lg:w-1/2">
+              <div className="flex flex-col sm:flex-row gap-4">
+                {/* District Filter */}
+                <div className="flex-1">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    জেলা
+                  </label>
+                  <select
+                    value={selectedDistrict}
+                    onChange={(e) => handleDistrictChange(e.target.value)}
+                    className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-white focus:ring-2 focus:ring-bnp-green focus:border-transparent transition-all shadow-sm hover:border-gray-300"
+                  >
+                    <option value="">জেলা নির্বাচন করুন</option>
+                    {districts.map((district) => (
+                      <option key={district} value={district}>
+                        {candidates.find((c) => c.district === district)?.districtBangla || district}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Region Filter - Dependent on District */}
+                <div className="flex-1">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    আসন
+                  </label>
+                  <select
+                    value={selectedRegion}
+                    onChange={(e) => setSelectedRegion(e.target.value)}
+                    disabled={!selectedDistrict}
+                    className={`w-full px-4 py-3 border border-gray-200 rounded-xl bg-white focus:ring-2 focus:ring-bnp-green focus:border-transparent transition-all shadow-sm ${
+                      !selectedDistrict 
+                        ? 'bg-gray-50 cursor-not-allowed text-gray-400 border-gray-100' 
+                        : 'hover:border-gray-300'
+                    }`}
+                  >
+                    <option value="">আসন নির্বাচন করুন</option>
+                    {regions.map((region) => (
+                      <option key={region} value={region}>
+                        {candidates.find((c) => c.region === region)?.regionBangla || region}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Reset Button */}
+                {(selectedDistrict || selectedRegion) && (
+                  <div className="flex items-end">
+                    <button
+                      onClick={handleResetFilters}
+                      className="px-5 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl transition-all font-medium whitespace-nowrap shadow-sm hover:shadow"
+                    >
+                      রিসেট
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              {/* Results Count */}
+              <div className="mt-4 text-sm text-gray-500 font-medium">
+                মোট <span className="text-bnp-green font-bold">{sortedCandidates.length}</span> জন প্রার্থী পাওয়া গেছে
+              </div>
+            </div>
+
+            {/* Right side - empty or can be used for additional content */}
+            <div className="hidden lg:block lg:w-1/2"></div>
+          </div>
+        </div>
+      </div>
+
+      {/* Candidates Grid - Using same floating card style */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
           {sortedCandidates.map((candidate, index) => (
@@ -55,45 +179,14 @@ const CandidatesGrid = () => {
               key={candidate.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.05, duration: 0.5 }}
-              whileHover={{ scale: 1.05, y: -8 }}
-              onClick={() => handleCandidateClick(candidate.id)}
-              className="cursor-pointer group"
+              transition={{ delay: index * 0.03, duration: 0.4 }}
             >
-              <div className="relative bg-white rounded-xl overflow-hidden shadow-lg group-hover:shadow-2xl transition-all">
-                {/* Special Badge for Tarique Rahman */}
-                {candidate.id === 'tarique-rahman' && (
-                  <div className="absolute top-4 left-4 z-10 bg-bnp-green text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
-                    ভারপ্রাপ্ত চেয়ারম্যান
-                  </div>
-                )}
-
-                {/* Candidate Image */}
-                <div className="relative aspect-square bg-gray-200 overflow-hidden">
-                  <img
-                    src={candidate.image}
-                    alt={candidate.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = 'https://via.placeholder.com/400x400/006747/ffffff?text=BNP';
-                    }}
-                  />
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-4 left-4 right-4 text-white">
-                      <p className="text-sm font-semibold">আরও দেখুন →</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Candidate Info */}
-                <div className="p-5">
-                  <h3 className="text-xl font-bold text-gray-900 mb-1">{candidate.nameBangla}</h3>
-                  <p className="text-sm text-bnp-green font-semibold">{candidate.positionBangla}</p>
-                  <p className="text-xs text-gray-500 mb-2">{candidate.seatBangla}</p>
-                </div>
-              </div>
+              <CandidateCard
+                candidate={candidate}
+                onClick={handleCandidateClick}
+                showBadge={candidate.id === 'tarique-rahman'}
+                variant="grid"
+              />
             </motion.div>
           ))}
         </div>

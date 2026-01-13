@@ -2,29 +2,29 @@ import { motion } from 'framer-motion';
 
 const HeroSection = () => {
   return (
-    <section className="relative w-full overflow-visible mb-4 sm:mb-5 md:mb-6 lg:mb-7" style={{ height: 'calc(100vh - 180px)', minHeight: '500px' }}>
-      {/* Background Image - 1920x1080 16:9 format with object-fit cover */}
+    <section className="relative w-screen h-screen overflow-visible z-50" style={{ width: '100vw', height: '100vh' }}>
+      {/* Background Image - Full screen coverage with object-fit: cover */}
       <div className="absolute inset-0 w-full h-full">
         <img
           src="/hero.jpeg"
           alt="BNP Hero"
           className="w-full h-full object-cover"
-          style={{ objectPosition: 'center 50%' }}
+          style={{ objectPosition: 'center center' }}
         />
       </div>
 
       {/* Dark Gradient Overlay for Text Readability */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/50" />
 
-      {/* Tagline - Bottom Left, 70% smaller */}
-      <div className="relative z-10 h-full flex items-end px-4 sm:px-6 lg:px-10 pb-8 md:pb-10 lg:pb-12">
+      {/* Tagline - Bottom Left Corner Overlay */}
+      <div className="absolute bottom-6 left-4 sm:left-6 lg:left-10 z-10 md:bottom-8 lg:bottom-12">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
           className="max-w-[200px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-[320px]"
         >
-          {/* Slogan Image - Scaled to 70% of original */}
+          {/* Slogan Image */}
           <img
             src="/slogan.png"
             alt="Shobar Age Bangladesh"
@@ -33,8 +33,8 @@ const HeroSection = () => {
         </motion.div>
       </div>
 
-      {/* Centered BNP Branding Block - Overlapping both sections */}
-      <div className="absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-1/2 z-30 w-[calc(100%-2rem)] sm:w-auto max-w-[95vw]">
+      {/* Centered BNP Branding Block - 50% visible, pushed down - HIGHEST Z-INDEX */}
+      <div className="absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-1/2 z-[100] w-[calc(100%-2rem)] sm:w-auto max-w-[95vw]">
         <motion.div
           initial={{ opacity: 0, y: 30, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}

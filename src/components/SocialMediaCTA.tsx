@@ -82,7 +82,7 @@ const SocialMediaCTA = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-8 md:mb-10"
+          className="text-center mb-12 md:mb-16 lg:mb-20"
         >
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
             সবগুলো প্ল্যাটফর্মে যুক্ত হন
