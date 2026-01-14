@@ -80,14 +80,4 @@ export const videos: Video[] = [
     date: '২৫ ডিসেম্বর, ২০২৫',
     duration: '০৩:১৪',
   },
-  {
-    id: '8',
-    title: 'ফ্যামিলি কার্ড : বাংলাদেশকে সামনে এগিয়ে নিতে বিএনপির যুগান্তকারী পরিকল্পনা।',
-    description: 'পরিবারের কল্যাণ ও সামাজিক সুরক্ষার লক্ষ্যে ফ্যামিলি কার্ড প্রকল্পের এক বিশেষ পরিকল্পনা।',
-    thumbnail: 'https://img.youtube.com/vi/mMX8k6rDJfo/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/embed/mMX8k6rDJfo',
-    youtubeId: 'mMX8k6rDJfo',
-    date: '২২ ডিসেম্বর, ২০২৫',
-    duration: '০১:৩৭',
-  },
 ];

@@ -138,7 +138,7 @@ const CallToActionSection = () => {
         </svg>
       ),
       title: "দুটি ব্যালট নিন",
-      description: "একটি এমপির জন্য, অন্যটি সংরক্ষিত মহিলা আসনের জন্য।"
+      description: "একটি এমপির জন্য, অন্যটি গণভোটের জন্য।"
     },
     {
       icon: (
