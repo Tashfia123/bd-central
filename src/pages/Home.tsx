@@ -12,11 +12,13 @@ const Home = () => {
       {/* 1. HeroSection */}
       <HeroSection />
 
-      {/* 2. BNPIdentityStrip */}
+      {/* 2. BNPIdentityStrip (Empty) */}
       <BNPIdentityStrip />
 
       {/* 3. NewsAndUpdatesSection - Static stacked cards (NOT a carousel) */}
-      <NewsAndUpdatesSection />
+      <div className="pt-12 md:pt-20 lg:pt-24">
+        <NewsAndUpdatesSection />
+      </div>
 
       {/* 4. CandidatesSection - Auto-scrolling 2-row gallery with candidate cards */}
       <CandidatesSection />

@@ -182,7 +182,7 @@ const NewsAndUpdatesSection = () => {
   };
 
   return (
-    <section className="w-full bg-gradient-to-b from-white via-gray-50/50 to-white pt-20 md:pt-24 lg:pt-28 pb-8 md:pb-10 lg:pb-12 overflow-hidden relative">
+    <section className="w-full bg-gradient-to-b from-white via-gray-50/50 to-white py-16 md:py-24 lg:py-32 overflow-hidden relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -190,7 +190,7 @@ const NewsAndUpdatesSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
-          className="text-center mb-8 md:mb-12 lg:mb-16 px-4"
+          className="text-center mb-12 md:mb-16 lg:mb-20 px-4"
         >
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-1">
             ইশতেহার
@@ -199,7 +199,7 @@ const NewsAndUpdatesSection = () => {
         </motion.div>
 
         {/* Video Carousel */}
-        <div 
+        <div
           ref={containerRef}
           className="relative w-full max-w-7xl mx-auto"
           onMouseEnter={() => setIsPaused(true)}
@@ -207,8 +207,8 @@ const NewsAndUpdatesSection = () => {
         >
 
           {/* Cards Container */}
-          <div 
-            className="relative h-[280px] sm:h-[320px] md:h-[380px] lg:h-[420px] flex items-center justify-center px-12 md:px-20" 
+          <div
+            className="relative h-[280px] sm:h-[320px] md:h-[380px] lg:h-[420px] flex items-center justify-center px-12 md:px-20"
             style={{ perspective: '1200px' }}
           >
             {videos.map((video, slotIndex) => {
@@ -259,7 +259,7 @@ const NewsAndUpdatesSection = () => {
                           }
                         }}
                       />
-                      
+
                       {/* Play Button Overlay - Subtle and transparent */}
                       <div className={`absolute inset-0 flex items-center justify-center bg-black/10 transition-all ${isCenter ? 'opacity-100' : 'opacity-60'}`}>
                         <motion.div
@@ -298,12 +298,12 @@ const NewsAndUpdatesSection = () => {
                         </svg>
                         {video.date}
                       </div>
-                      
+
                       {/* Title */}
                       <h3 className="text-sm md:text-base font-bold text-gray-900 line-clamp-1 mb-1">
                         {video.title}
                       </h3>
-                      
+
                       {/* Description */}
                       <p className="text-xs md:text-sm text-gray-600 line-clamp-2">
                         {video.description}

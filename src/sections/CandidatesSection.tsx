@@ -173,14 +173,14 @@ const CandidatesSection = () => {
   };
 
   return (
-    <section className="w-full bg-gradient-to-b from-gray-50 via-white to-gray-50 py-10 md:py-14 lg:py-18 overflow-hidden">
+    <section className="w-full bg-gradient-to-b from-gray-50 via-white to-gray-50 py-16 md:py-24 lg:py-32 overflow-hidden">
       {/* Section Header */}
       <motion.div
         initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.4 }}
-        className="text-center mb-10 md:mb-14 lg:mb-18 px-4"
+        className="text-center mb-12 md:mb-16 lg:mb-20 px-4"
       >
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
           মনোনীত প্রার্থীগণ
@@ -189,10 +189,10 @@ const CandidatesSection = () => {
       </motion.div>
 
       {/* Top Row - Floating Cards */}
-      <div className="mb-8 md:mb-12 lg:mb-16 overflow-hidden px-2">
+      <div className="mb-12 md:mb-16 lg:mb-20 overflow-hidden px-2">
         <div
           ref={topRowRef}
-          className="flex gap-4 md:gap-5 lg:gap-6 overflow-x-auto md:overflow-x-hidden scrollbar-hide py-4"
+          className="flex gap-6 md:gap-8 lg:gap-10 overflow-x-auto md:overflow-x-hidden scrollbar-hide py-4"
           style={{
             scrollbarWidth: 'none',
             msOverflowStyle: 'none',
@@ -215,7 +215,7 @@ const CandidatesSection = () => {
       <div className={`overflow-hidden px-2 ${isMobile ? 'hidden' : 'block'}`}>
         <div
           ref={bottomRowRef}
-          className="flex gap-4 md:gap-5 lg:gap-6 overflow-x-hidden py-4"
+          className="flex gap-6 md:gap-8 lg:gap-10 overflow-x-hidden py-4"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {duplicatedBottomCandidates.map((candidate, index) => (
@@ -236,7 +236,7 @@ const CandidatesSection = () => {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.2 }}
-        className="flex justify-center md:justify-end mt-10 md:mt-14 lg:mt-18 px-4 md:px-8"
+        className="flex justify-center md:justify-end mt-16 md:mt-24 lg:mt-32 px-4 md:px-8"
       >
         <button
           onClick={handleSeeAllClick}

@@ -131,11 +131,10 @@ const CandidatesGrid = () => {
                     value={selectedRegion}
                     onChange={(e) => setSelectedRegion(e.target.value)}
                     disabled={!selectedDistrict}
-                    className={`w-full px-4 py-3 border border-gray-200 rounded-xl bg-white focus:ring-2 focus:ring-bnp-green focus:border-transparent transition-all shadow-sm ${
-                      !selectedDistrict 
-                        ? 'bg-gray-50 cursor-not-allowed text-gray-400 border-gray-100' 
-                        : 'hover:border-gray-300'
-                    }`}
+                    className={`w-full px-4 py-3 border border-gray-200 rounded-xl bg-white focus:ring-2 focus:ring-bnp-green focus:border-transparent transition-all shadow-sm ${!selectedDistrict
+                      ? 'bg-gray-50 cursor-not-allowed text-gray-400 border-gray-100'
+                      : 'hover:border-gray-300'
+                      }`}
                   >
                     <option value="">আসন নির্বাচন করুন</option>
                     {regions.map((region) => (

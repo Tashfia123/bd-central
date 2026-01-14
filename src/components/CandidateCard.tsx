@@ -8,6 +8,7 @@ export interface CandidateCardProps {
     positionBangla: string;
     seatBangla: string;
     image: string;
+    portfolioUrl?: string;
   };
   onClick?: (candidateId: string) => void;
   showBadge?: boolean;
@@ -22,6 +23,22 @@ const CandidateCard = ({
   badgeText = 'ভারপ্রাপ্ত চেয়ারম্যান',
   variant = 'default',
 }: CandidateCardProps) => {
+  const isExternalPortfolio = candidate.portfolioUrl?.startsWith('http');
+
+  const handleInteraction = (e: React.MouseEvent) => {
+    // If it's an external link, redirect directly
+    if (isExternalPortfolio && candidate.portfolioUrl) {
+      e.preventDefault();
+      e.stopPropagation();
+      window.top!.location.href = candidate.portfolioUrl;
+      return;
+    }
+
+    // Otherwise use the provided onClick handler for internal navigation
+    if (onClick) {
+      onClick(candidate.id);
+    }
+  };
   // Generate initials for fallback image
   const getInitials = (name: string) => {
     return name
@@ -44,13 +61,13 @@ const CandidateCard = ({
 
   return (
     <motion.div
-      whileHover={{ 
-        scale: 1.03, 
+      whileHover={{
+        scale: 1.03,
         y: -8,
         transition: { duration: 0.3, ease: 'easeOut' }
       }}
       whileTap={{ scale: 0.98 }}
-      onClick={() => onClick?.(candidate.id)}
+      onClick={handleInteraction}
       className={`
         cursor-pointer group
         ${isGridVariant ? 'w-full' : 'flex-shrink-0 w-48 sm:w-52 md:w-56 lg:w-60'}
@@ -85,7 +102,7 @@ const CandidateCard = ({
             loading="lazy"
             onError={handleImageError}
           />
-          
+
           {/* Gradient Overlay on Hover */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <div className="absolute bottom-3 left-3 right-3 text-white">

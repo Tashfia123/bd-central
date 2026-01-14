@@ -16,6 +16,14 @@ const CandidatePortfolio = () => {
     navigate('/');
   };
 
+  const isExternalPortfolio = candidate?.portfolioUrl && (candidate.portfolioUrl.startsWith('http://') || candidate.portfolioUrl.startsWith('https://'));
+
+  const handleExternalLink = () => {
+    if (isExternalPortfolio && candidate?.portfolioUrl) {
+      window.location.href = candidate.portfolioUrl;
+    }
+  };
+
   if (!candidate) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-bnp-green-50 to-white flex items-center justify-center">
@@ -91,9 +99,12 @@ const CandidatePortfolio = () => {
           transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto"
         >
-          {/* Candidate Image */}
+          {/* Candidate Image - Clickable if External Link */}
           <div className="mb-12">
-            <div className="relative aspect-video md:aspect-[21/9] bg-gray-200 rounded-2xl overflow-hidden shadow-2xl">
+            <div
+              className={`relative aspect-video md:aspect-[21/9] bg-gray-200 rounded-2xl overflow-hidden shadow-2xl ${isExternalPortfolio ? 'cursor-pointer hover:ring-4 hover:ring-bnp-green/30 transition-all' : ''}`}
+              onClick={isExternalPortfolio ? handleExternalLink : undefined}
+            >
               <img
                 src={candidate.image}
                 alt={candidate.name}
@@ -104,6 +115,15 @@ const CandidatePortfolio = () => {
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+
+              {/* Click instruction overlay for external links */}
+              {isExternalPortfolio && (
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity bg-black/20">
+                  <div className="bg-white/90 text-bnp-green px-6 py-2 rounded-full font-bold shadow-lg transform scale-110">
+                    ওয়েবসাইট দেখুন ↗
+                  </div>
+                </div>
+              )}
               <div className="absolute bottom-8 left-8 text-white">
                 <h2 className="text-3xl md:text-4xl font-bold mb-2">{candidate.nameBangla}</h2>
                 <p className="text-xl">{candidate.positionBangla}</p>
@@ -112,31 +132,58 @@ const CandidatePortfolio = () => {
             </div>
           </div>
 
-          {/* Placeholder Notice */}
+          {/* Portfolio Status / Link */}
           <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 text-center border-4 border-bnp-green-100">
             <div className="inline-block p-4 bg-bnp-green-50 rounded-full mb-6">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-16 w-16 text-bnp-green"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                />
-              </svg>
+              {isExternalPortfolio ? (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-bnp-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                </svg>
+              ) : (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-16 w-16 text-bnp-green"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                  />
+                </svg>
+              )}
             </div>
+
             <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-              Portfolio Website Coming Soon
+              {isExternalPortfolio ? 'Official Portfolio Website' : 'Portfolio Website Coming Soon'}
             </h3>
-            <p className="text-lg text-gray-600 mb-2">এখানে একটি পোর্টফলিও ওয়েবসাইট থাকবে।</p>
-            <p className="text-base text-gray-500 mb-8">
-              There will be a portfolio website here.
+            <p className="text-lg text-gray-600 mb-2">
+              {isExternalPortfolio
+                ? 'এই নেতার নিজস্ব পোর্টফলিও ওয়েবসাইট ভিজিট করুন।'
+                : 'এখানে একটি পোর্টফলিও ওয়েবসাইট থাকবে।'}
             </p>
+            <p className="text-base text-gray-500 mb-8">
+              {isExternalPortfolio
+                ? 'Visit the official portfolio website of this leader.'
+                : 'There will be a portfolio website here.'}
+            </p>
+
+            {isExternalPortfolio && (
+              <div className="mb-8">
+                <button
+                  onClick={handleExternalLink}
+                  className="bg-bnp-green hover:bg-bnp-green-600 text-white px-8 py-4 rounded-full font-bold text-lg transition-all hover:scale-105 shadow-lg flex items-center justify-center gap-2 mx-auto"
+                >
+                  ওয়েবসাইট ভিজিট করুন
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </button>
+              </div>
+            )}
 
             {/* Candidate Details */}
             <div className="border-t border-gray-200 pt-8 mt-8">
@@ -163,7 +210,7 @@ const CandidatePortfolio = () => {
             <div className="mt-8">
               <button
                 onClick={handleBackToGrid}
-                className="bg-bnp-green hover:bg-bnp-green-600 text-white px-8 py-3 rounded-full font-semibold transition-all hover:scale-105 shadow-lg"
+                className="text-bnp-green hover:text-bnp-green-700 font-semibold hover:underline"
               >
                 সকল নেতৃত্ব দেখুন
               </button>

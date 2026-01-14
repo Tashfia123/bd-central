@@ -23,13 +23,13 @@ const CTACard = ({ icon, title, description, stepNumber, isHovered, onHover }: C
     >
       {/* Step Number Badge */}
       <div className="absolute -top-3 -left-3 md:-top-4 md:-left-4 z-10">
-        <motion.div 
+        <motion.div
           className={`
             w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center
             font-bold text-sm md:text-base shadow-lg
             transition-all duration-300
-            ${isHovered 
-              ? 'bg-bnp-green text-white scale-110' 
+            ${isHovered
+              ? 'bg-bnp-green text-white scale-110'
               : 'bg-white text-bnp-green border-2 border-bnp-green'
             }
           `}
@@ -49,11 +49,11 @@ const CTACard = ({ icon, title, description, stepNumber, isHovered, onHover }: C
       `}>
         {/* Icon */}
         <div className="flex justify-center mb-3 md:mb-4">
-          <motion.div 
+          <motion.div
             className={`
               p-3 md:p-4 rounded-xl transition-all duration-300
-              ${isHovered 
-                ? 'bg-bnp-green text-white shadow-lg shadow-bnp-green/30' 
+              ${isHovered
+                ? 'bg-bnp-green text-white shadow-lg shadow-bnp-green/30'
                 : 'bg-bnp-green-50 text-bnp-green'
               }
             `}
@@ -102,11 +102,11 @@ const ConnectorArrow = ({ index }: { index: number }) => {
         {/* Animated pulse dot */}
         <motion.div
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-bnp-green"
-          animate={{ 
+          animate={{
             x: [-12, 12, -12],
             opacity: [0.5, 1, 0.5]
           }}
-          transition={{ 
+          transition={{
             duration: 2,
             repeat: Infinity,
             ease: "easeInOut"
@@ -152,7 +152,8 @@ const CallToActionSection = () => {
   ];
 
   return (
-    <section className="w-full bg-gradient-to-b from-white via-bnp-green-50/30 to-white py-10 md:py-12 lg:py-14 overflow-hidden">
+    <section className="w-full bg-gradient-to-b from-white via-bnp-green-50/30 to-white py-16 md:py-24 lg:py-32 overflow-hidden">
+      {/* ... rest of steps ... */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         {/* Section Header */}
         <motion.div
@@ -205,16 +206,16 @@ const CallToActionSection = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                 </svg>
               </div>
-              
+
               {/* Content */}
               <div className="flex-1">
                 <h3 className="text-base md:text-lg font-bold text-bnp-green mb-1">গুরুত্বপূর্ণ তথ্য</h3>
                 <p className="text-gray-700 text-xs md:text-sm leading-relaxed">
-                  ভোট দেওয়ার সময় আপনার <span className="font-semibold text-bnp-green">জাতীয় পরিচয়পত্র</span> অবশ্যই সাথে রাখুন। 
+                  ভোট দেওয়ার সময় আপনার <span className="font-semibold text-bnp-green">জাতীয় পরিচয়পত্র</span> অবশ্যই সাথে রাখুন।
                   ভোটকেন্দ্রে গিয়ে নাম যাচাই করুন এবং গোপন বুথে গিয়ে সিল দিন।
                 </p>
               </div>
-              
+
               {/* NID Icon */}
               <div className="hidden md:flex flex-shrink-0 items-center gap-2 bg-white px-3 py-2 rounded-lg shadow-sm border border-gray-100">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">

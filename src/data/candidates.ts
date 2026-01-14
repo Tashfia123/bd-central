@@ -32,7 +32,7 @@ export const candidates: Candidate[] = [
     description: 'Senior Vice Chairman and Acting Chairman of Bangladesh Nationalist Party',
     descriptionBangla: 'বাংলাদেশ জাতীয়তাবাদী দল এর ভারপ্রাপ্ত চেয়ারম্যান',
     image: 'https://www.bssnews.net/assets/news_photos/2024/12/15/image-230904-1734202542.jpg',
-    portfolioUrl: '/candidate/tarique-rahman',
+    portfolioUrl: 'https://tariquerahman-bnpbd.vercel.app/',
   },
   {
     id: 'fakhrul',
