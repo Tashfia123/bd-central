@@ -152,7 +152,7 @@ const CallToActionSection = () => {
   ];
 
   return (
-    <section className="w-full bg-gradient-to-b from-white via-bnp-green-50/30 to-white py-16 md:py-24 lg:py-32 overflow-hidden">
+    <section className="w-full bg-gradient-to-b from-white via-bnp-green-50/30 to-white py-8 md:py-12 lg:py-16 overflow-hidden">
       {/* ... rest of steps ... */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         {/* Section Header */}
@@ -161,7 +161,7 @@ const CallToActionSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12 md:mb-16 lg:mb-20"
+          className="text-center mb-8 md:mb-10 lg:mb-12"
         >
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
             কিভাবে ভোট দেবেন

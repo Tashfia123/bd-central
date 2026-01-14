@@ -14,7 +14,7 @@
 **Where:** `/public/candidates/` folder
 
 **Images needed:**
-1. `tarique-rahman.jpg` - Tarique Rahman (Acting Chairman)
+1. `tarique-rahman.jpg` - Tarique Rahman (Chairman)
 2. `khaleda-zia.jpg` - Begum Khaleda Zia (Chairperson)
 3. `fakhrul.jpg` - Mirza Fakhrul Islam Alamgir (Secretary General)
 4. `candidate3.jpg` to `candidate10.jpg` - Other BNP leaders

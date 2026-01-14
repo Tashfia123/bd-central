@@ -173,14 +173,14 @@ const CandidatesSection = () => {
   };
 
   return (
-    <section className="w-full bg-gradient-to-b from-gray-50 via-white to-gray-50 py-16 md:py-24 lg:py-32 overflow-hidden">
+    <section className="w-full bg-gradient-to-b from-gray-50 via-white to-gray-50 py-8 md:py-12 lg:py-16 overflow-hidden">
       {/* Section Header */}
       <motion.div
         initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.4 }}
-        className="text-center mb-12 md:mb-16 lg:mb-20 px-4"
+        className="text-center mb-8 md:mb-10 lg:mb-12 px-4"
       >
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
           মনোনীত প্রার্থীগণ
@@ -189,7 +189,7 @@ const CandidatesSection = () => {
       </motion.div>
 
       {/* Top Row - Floating Cards */}
-      <div className="mb-12 md:mb-16 lg:mb-20 overflow-hidden px-2">
+      <div className="mb-8 md:mb-10 lg:mb-12 overflow-hidden px-2">
         <div
           ref={topRowRef}
           className="flex gap-6 md:gap-8 lg:gap-10 overflow-x-auto md:overflow-x-hidden scrollbar-hide py-4"
@@ -236,7 +236,7 @@ const CandidatesSection = () => {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.2 }}
-        className="flex justify-center md:justify-end mt-16 md:mt-24 lg:mt-32 px-4 md:px-8"
+        className="flex justify-center md:justify-end mt-8 md:mt-12 lg:mt-16 px-4 md:px-8"
       >
         <button
           onClick={handleSeeAllClick}

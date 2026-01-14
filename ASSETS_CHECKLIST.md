@@ -47,7 +47,7 @@
 **Path:** `/public/candidates/`
 
 **Files needed:**
-1. `tarique-rahman.jpg` - Acting Chairman (ভারপ্রাপ্ত চেয়ারম্যান)
+1. `tarique-rahman.jpg` - Chairman (চেয়ারম্যান)
 2. `khaleda-zia.jpg` - Chairperson (চেয়ারপার্সন)
 3. `fakhrul.jpg` - Secretary General (মহাসচিব)
 4. `candidate3.jpg` - Dr. Abdul Matin

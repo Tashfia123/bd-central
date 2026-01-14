@@ -182,7 +182,7 @@ const NewsAndUpdatesSection = () => {
   };
 
   return (
-    <section className="w-full bg-gradient-to-b from-white via-gray-50/50 to-white py-16 md:py-24 lg:py-32 overflow-hidden relative">
+    <section className="w-full bg-gradient-to-b from-white via-gray-50/50 to-white py-8 md:py-12 lg:py-16 overflow-hidden relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -193,7 +193,7 @@ const NewsAndUpdatesSection = () => {
           className="text-center mb-12 md:mb-16 lg:mb-20 px-4"
         >
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-1">
-            ইশতেহার
+            আমাদের নির্বাচনী ইশতেহার
           </h2>
           <div className="w-16 md:w-20 h-0.5 md:h-1 bg-bnp-green mx-auto rounded-full" />
         </motion.div>

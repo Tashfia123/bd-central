@@ -16,7 +16,7 @@ const Home = () => {
       <BNPIdentityStrip />
 
       {/* 3. NewsAndUpdatesSection - Static stacked cards (NOT a carousel) */}
-      <div className="pt-12 md:pt-20 lg:pt-24">
+      <div className="pt-16 md:pt-24 lg:pt-32">
         <NewsAndUpdatesSection />
       </div>
 

@@ -104,7 +104,7 @@ const VideoCarouselSection = () => {
   const visibleCards = getVisibleCards();
 
   return (
-    <section className="w-full bg-gradient-to-b from-bnp-green-50 to-white py-16 md:py-24">
+    <section className="w-full bg-gradient-to-b from-bnp-green-50 to-white py-8 md:py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <motion.div
@@ -202,9 +202,8 @@ const VideoCarouselSection = () => {
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`h-2 rounded-full transition-all ${
-                  index === currentIndex ? 'w-8 bg-bnp-green' : 'w-2 bg-gray-300 hover:bg-gray-400'
-                }`}
+                className={`h-2 rounded-full transition-all ${index === currentIndex ? 'w-8 bg-bnp-green' : 'w-2 bg-gray-300 hover:bg-gray-400'
+                  }`}
                 aria-label={`Go to video ${index + 1}`}
               />
             ))}
@@ -231,9 +230,8 @@ const VideoCard = ({ video, size }: VideoCardProps) => {
 
   return (
     <div
-      className={`relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all hover:scale-105 ${
-        isLarge ? 'transform scale-105' : ''
-      }`}
+      className={`relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all hover:scale-105 ${isLarge ? 'transform scale-105' : ''
+        }`}
     >
       {/* Thumbnail */}
       <div className="relative aspect-video bg-gray-200 group overflow-hidden">
@@ -259,8 +257,8 @@ const VideoCard = ({ video, size }: VideoCardProps) => {
         {/* Badge */}
         <div className="absolute top-3 left-3 bg-bnp-green text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="currentColor" viewBox="0 0 16 16">
-            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-            <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+            <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
           </svg>
           ভিডিও দেখুন
         </div>

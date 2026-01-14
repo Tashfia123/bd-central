@@ -20,7 +20,7 @@ const CandidateCard = ({
   candidate,
   onClick,
   showBadge = false,
-  badgeText = 'ভারপ্রাপ্ত চেয়ারম্যান',
+  badgeText = 'চেয়ারম্যান',
   variant = 'default',
 }: CandidateCardProps) => {
   const isExternalPortfolio = candidate.portfolioUrl?.startsWith('http');

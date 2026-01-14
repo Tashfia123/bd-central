@@ -4,7 +4,7 @@ import { newsArticles } from '../data/news';
 
 const NewsSection = () => {
   return (
-    <section className="w-full bg-gradient-to-b from-white to-bnp-green-50 py-16 md:py-24 lg:py-32">
+    <section className="w-full bg-gradient-to-b from-white to-bnp-green-50 py-8 md:py-12 lg:py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <motion.div
@@ -12,7 +12,7 @@ const NewsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12 md:mb-16 lg:mb-20"
+          className="text-center mb-8 md:mb-10 lg:mb-12"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             সংবাদ ও আপডেট
